@@ -1,0 +1,44 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Usamos un div centrado con ancho máximo controlado -->
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow border-0 rounded-3 mx-auto" style="max-width: 400px;">
+                <div class="card-header bg-dark text-white text-center py-3">
+                    <h5 class="mb-0 fw-bold">Acceso a Ferretería</h5>
+                </div>
+                <div class="card-body p-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold small">Usuario</label>
+                            <input type="text" name="username" class="form-control" placeholder="Ingrese su usuario" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold small">Contraseña</label>
+                            <input type="password" name="password" class="form-control" placeholder="Ingrese su contraseña" required>
+                        </div>
+
+                        {% if error %}
+                            <div class="alert alert-danger py-2 text-center small" role="alert">
+                                {{ error }}
+                            </div>
+                        {% endif %}
+
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-dark fw-bold">Iniciar Sesión</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center text-muted small py-2 bg-light">
+                    Sistema de Control de Inventario
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

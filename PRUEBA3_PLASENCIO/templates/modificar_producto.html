@@ -1,0 +1,61 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-header bg-dark text-white text-center py-3">
+                    <h5 class="mb-0 fw-bold">Modificar Producto</h5>
+                </div>
+                <div class="card-body p-4">
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold small">Nombre del Producto</label>
+                            {{ formulario.nombre }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold small">Descripción</label>
+                            {{ formulario.descripcion }}
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold small">Stock</label>
+                                {{ formulario.stock }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold small">Precio Unitario ($)</label>
+                                {{ formulario.precio_unitario }}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold small">Fecha de Ingreso</label>
+                                {{ formulario.fecha_ingreso }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold small">Categoría</label>
+                                {{ formulario.categoria }}
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <a href="{% url 'listar_productos' %}" class="btn btn-outline-secondary btn-sm fw-semibold">
+                                Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-dark btn-sm fw-bold px-4">
+                                Guardar Cambios
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
